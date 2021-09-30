@@ -1,14 +1,19 @@
 import { useState } from "react";
 import Card from "@/components/card";
 import CardContainer from "@/components/card-container";
+import { useEffect } from 'react';
+
 // https://www.openbrewerydb.org/documentation/03-search
+
 
 const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("Raleigh");
+  const [queryTitle, setQueryTitle] = useState("Raleigh")
+
 
   const getData = () => {
-    console.log(query);
+    setQueryTitle(query)
     fetch(`https://api.openbrewerydb.org/breweries/search?query=${query}`)
       .then((response) => response.json())
       .then((data) => {
@@ -18,9 +23,15 @@ const SearchBar = () => {
         console.error("Error:", error);
       });
   };
+
+  useEffect(() => {
+    getData()
+  }, []);
+
+
   return (
-    <section>
-      <div className="p-8">
+    <section className="items-center justify-center flex flex-col xl:w-9/12 lg:w-11/12">
+      <div className="p-8 w-6/12 lg:w-9/12 w-11/12">
         <div className="bg-white flex items-center rounded-full shadow-xl">
           <input
             className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none"
@@ -38,7 +49,11 @@ const SearchBar = () => {
           </div>
         </div>
       </div>
+      <p>{results.length} results found for "{queryTitle}"</p>
       <CardContainer>
+        {/* {() => {
+          return <p className="text-6xl">{results.length}s found for {query}</p>
+        }} */}
         {results.map((item, index) => {
           return item && <Card key={item.id} {...item} />;
         })}
