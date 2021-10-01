@@ -1,19 +1,19 @@
 import { useState } from "react";
 import Card from "@/components/card";
 import CardContainer from "@/components/card-container";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 // https://www.openbrewerydb.org/documentation/03-search
-
+// https://newbedev.com/javascript-component-did-mount-functional-component-next-js-code-example
+// https://api.openbrewerydb.org/breweries/search?query=raleigh
 
 const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("Raleigh");
-  const [queryTitle, setQueryTitle] = useState("Raleigh")
-
+  const [queryTitle, setQueryTitle] = useState("Raleigh");
 
   const getData = () => {
-    setQueryTitle(query)
+    setQueryTitle(query);
     fetch(`https://api.openbrewerydb.org/breweries/search?query=${query}`)
       .then((response) => response.json())
       .then((data) => {
@@ -23,33 +23,35 @@ const SearchBar = () => {
         console.error("Error:", error);
       });
   };
-
   useEffect(() => {
-    getData()
+    getData();
   }, []);
-
 
   return (
     <section className="items-center justify-center flex flex-col xl:w-9/12 lg:w-11/12">
-      <div className="p-8 w-6/12 lg:w-9/12 w-11/12">
-        <div className="bg-white flex items-center rounded-full shadow-xl">
+      <div className="p-8 lg:w-6/12 w-11/12 md:w-11/12 sm:w-11/12">
+        <div className="flex items-center rounded-lg border content-center px-4 pr-0">
+          {/* <div> */}
           <input
-            className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none"
+            className="w-full h-12 px-1 text-lg text-gray-700 placeholder-gray-600 rounded-lg focus:shadow-outline"
             type="text"
-            value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
+          {/* <label>Search by name, city, or state</label> */}
+          {/* </div> */}
           <div className="p-4">
             <button
-              className="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center"
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
               onClick={getData}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Search
             </button>
           </div>
         </div>
       </div>
-      <p>{results.length} results found for "{queryTitle}"</p>
+      <p>
+        {results.length} results found for "{queryTitle}"
+      </p>
       <CardContainer>
         {/* {() => {
           return <p className="text-6xl">{results.length}s found for {query}</p>
