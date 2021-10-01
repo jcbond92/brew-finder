@@ -5,7 +5,9 @@ const Card = (props: any) => {
   return (
     <div className="p-6 mt-10 text-left border border-gray-100 border-opacity-20 w-96 rounded-xl relative text-gray-300">
       <h3 className="text-2xl font-bold">{props.name}</h3>
-      <h4 className="absolute top-2 right-3">{props.brewery_type}</h4>
+      <h4 className="absolute -top-3 right-8 px-3 bg-dark">
+        {props.brewery_type}
+      </h4>
       <ul>
         <li>
           {props.street ? `${props.street}, ` : ""}

@@ -4,7 +4,7 @@ const Header = () => {
       <h2 className="text-6xl md:text-5xl font-bold tracking-tight md:tracking-tighter leading-tight">
         BrewFinder.
       </h2>
-      <p className="mt-3 text-2xl">get a good beer anywhere 🍻</p>
+      <p className="mt-3 text-2xl">find a good beer anywhere 🍻</p>
     </div>
   );
 };
