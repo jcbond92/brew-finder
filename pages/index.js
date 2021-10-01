@@ -1,10 +1,10 @@
-import SiteWrapper from "@/components/site-wrapper.tsx";
+import Layout from "@/components/layout.tsx";
 import SearchBar from "@/components/search-bar.tsx";
 
 export default function Home() {
   return (
-    <SiteWrapper>
+    <Layout>
       <SearchBar />
-    </SiteWrapper>
+    </Layout>
   );
 }

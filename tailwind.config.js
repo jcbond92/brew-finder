@@ -3,9 +3,13 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    backgroundColor: (theme) => ({
+      ...theme("colors"),
+      dark: "#0f0020",
+    }),
     extend: {
       outline: {
-        blue: "2px solid #0000ff",
+        gray: "2px solid #0000ff",
       },
     },
   },

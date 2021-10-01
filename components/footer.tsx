@@ -1,14 +1,11 @@
 const Footer = () => {
   return (
-    <footer className="flex items-center justify-center w-full h-24 border-t">
-        <p
-          className="flex items-center justify-center"
-          
-        >
-          Built with Next.js | Deployed with Netlify
-        </p>
-      </footer>
-  )
-}
+    <footer className="flex items-center justify-center w-full h-24 bg-dark text-gray-200">
+      <p className="flex items-center justify-center">
+        Built with Next.js and Tailwind CSS | Deployed with Netlify
+      </p>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
