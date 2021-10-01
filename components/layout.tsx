@@ -5,7 +5,7 @@ import Main from "@/components/main";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-dark">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 min-w-full bg-dark">
       <Head>
         <title>BrewFinder</title>
         <link rel="icon" href="/favicon.ico" />
